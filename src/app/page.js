@@ -1,95 +1,94 @@
-import Image from "next/image";
-import styles from "./page.module.css";
 
-export default function Home() {
+'use client'
+import React, { useEffect, useState } from 'react';
+import AnimatedScreen from './components/AnimatedScreen/page'
+import styles from './page.module.css';
+import Image from 'next/image';
+
+const Home = () => {
+  const [displayText, setDisplayText] = useState('');
+
+  const originalText = "I'm Darshan Panchal";
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:",.<>?/`~';
+
+  useEffect(() => {
+    let iteration = 0;
+    const interval = setInterval(() => {
+      setDisplayText(prev => {
+        if (iteration >= originalText.length) {
+          clearInterval(interval);
+          return originalText;
+        }
+
+        const updatedText = originalText.split('').map((char, index) => {
+          if (index < iteration) {
+            return originalText[index];
+          }
+          return characters[Math.floor(Math.random() * characters.length)];
+        }).join('');
+
+        iteration += 1 / 2; // Adjust the speed here
+        return updatedText;
+      });
+    }, 150);
+
+    return () => clearInterval(interval);
+  }, []);
+
+
+  
+  const openCV = () => {
+    // Construct the URL to the PDF file using the correct file path
+    const cvUrl = '/Darshan_Panchal_Resume.pdf';
+
+    // Create a new iframe element
+    const iframe = document.createElement('iframe');
+    iframe.src = cvUrl;
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    iframe.frameBorder = 0;
+
+    // Open the CV in a new tab
+    const newWindow = window.open(cvUrl);
+    if (newWindow) {
+      // Append the iframe to the new tab's document body
+      newWindow.document.body.appendChild(iframe);
+    } else {
+      // If blocked, display a message to the user
+      alert('Please allow pop-ups to view the Curriculum Vitae.');
+    }
+  };
+
+
+  
+
+
+
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
+
+    <div className={styles.fatherHome}>
+      <div className={styles.motherHome}>
         <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+        <h2 className={styles.motherH3}>Hi there,<br /> welcome to my portfolio</h2>
+        <p className={styles.motherP}>{displayText}</p>
+        <q className={styles.motherQ}>
+          Skilled in crafting dynamic, responsive user interfaces and robust, scalable server-side web-apps.
+        </q>
+
+        <div className={styles.btnDiv}><button className={styles.motherBtn} onClick={openCV}>Curriculum Vitae <Image src='/svgs/cv.svg' width={20} height={20} alt='cv'/></button></div>
         </div>
+
+
+
+
       </div>
+      <div className={styles.stepMom}>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+
       </div>
+    </div>
+  );f
+};
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
-}
+export default Home;

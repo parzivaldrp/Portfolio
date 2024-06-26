@@ -1,0 +1,145 @@
+.animeScreen {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    background-color: transparent;
+    justify-content: bottom left;
+    padding: 10px 4px;
+    background-color: rgb(10, 109, 229);
+outline: 1px solid red;
+}
+
+.screen {
+    width: 40%;
+    border: 1px solid #0080FF;
+    border-radius: 5px;
+    position: relative;
+    height: 50vh;
+    background-image: linear-gradient(rgba(0, 128, 255, 0.4), rgba(0, 128, 255, 0.4));
+    overflow: hidden;
+}
+
+@keyframes pan-overlay {
+    from {
+        background-position: 0% 0%;
+    }
+    to {
+        background-position: 0% 100%;
+    }
+}
+
+
+.screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 100% 9px;
+    background-image: linear-gradient(
+        rgba(0, 128, 255, 0.15),
+        rgba(0, 128, 255, 0.15) 3px,
+        transparent 3px,
+        transparent 9px
+    );
+    pointer-events: none;
+    animation: pan-overlay 3s linear infinite;
+}
+
+@keyframes pan-image {  
+    0% {
+      background-position: 36% 42%;
+      background-size: 200%;
+    }
+    
+    20% {
+      background-position: 30% 35%;
+      background-size: 200%;
+    }
+    
+    20.0001% { /* -- View 2 -- */
+      background-position: 60% 85%;
+      background-size: 500%;
+    }
+    
+    40% {
+      background-position: 49% 81%;
+      background-size: 500%;
+    }
+    
+    40.0001% { /* -- View 3 -- */
+      background-position: 80% 42%;
+      background-size: 300%;
+    }
+    
+    60% {
+      background-position: 84% 33%;
+      background-size: 300%;
+    }
+    
+    60.0001% { /* -- View 4 -- */
+      background-position: 0% 0%;
+      background-size: 300%;
+    }
+    
+    80% {
+      background-position: 15% 4%;
+      background-size: 300%;
+    }
+    
+    80.0001% { /* -- View 5 -- */
+      background-position: 80% 10%;
+      background-size: 300%;
+    }
+    
+    100% {
+      background-position: 72% 14%;
+      background-size: 300%;
+    }
+  }
+.screen > .screenImage {
+  background-image: linear-gradient(rgba(0, 128, 255, 0.4), rgba(0, 128, 255, 0.4)), url('/anime_bg5.jpg');
+  height: 100%;
+    width: 100%;
+    background-size: 300%;
+    background-position: center;
+    filter: sepia(100%) hue-rotate(160deg) ;
+    opacity: 0.6;
+    position: absolute;
+    animation: pan-image 15s linear infinite;
+
+}
+
+.overlayScreen{
+    position: absolute;
+    z-index: 2;
+    left: 0px;
+    top: 0px;
+    padding: 10px;
+}
+
+.screen > .screenContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    position: relative;
+    z-index: 3;
+    margin: 1rem;
+    border: 1px solid #0080FF;
+    padding: 1rem;
+    border-radius: 0.6rem;
+    height: calc(100% - 2rem - 2rem); /* Adjust based on margin and padding */
+    overflow-y: auto;/* To handle overflow content */
+  }
+
+ 
+
+
+
+
+
+
