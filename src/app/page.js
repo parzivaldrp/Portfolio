@@ -1,7 +1,6 @@
 
 'use client'
 import React, { useEffect, useState } from 'react';
-import AnimatedScreen from './components/AnimatedScreen/page'
 import styles from './page.module.css';
 import Image from 'next/image';
 
@@ -39,7 +38,7 @@ const Home = () => {
   
   const openCV = () => {
     // Construct the URL to the PDF file using the correct file path
-    const cvUrl = '/Darshan_Panchal_Resume.pdf';
+    const cvUrl = '/Darshan Panchal CV.pdf';
 
     // Create a new iframe element
     const iframe = document.createElement('iframe');
@@ -59,12 +58,6 @@ const Home = () => {
     }
   };
 
-
-  
-
-
-
-
   return (
 
     <div className={styles.fatherHome}>
@@ -79,16 +72,11 @@ const Home = () => {
         <div className={styles.btnDiv}><button className={styles.motherBtn} onClick={openCV}>Curriculum Vitae <Image src='/svgs/cv.svg' width={20} height={20} alt='cv'/></button></div>
         </div>
 
-
-
-
       </div>
-      <div className={styles.stepMom}>
+    
 
-
-      </div>
     </div>
-  );f
+  );
 };
 
 export default Home;
