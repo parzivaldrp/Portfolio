@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import styles from './Navbar.module.css';
 
+
 const page = () => {
  
 
@@ -10,6 +11,7 @@ const page = () => {
       <div className={styles.navbarContainer}>
         <div className={styles.navbarBrand}>
         <Link href="/">
+
             <h1>Darshan</h1>
           </Link>
         </div>

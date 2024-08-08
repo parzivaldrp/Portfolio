@@ -49,6 +49,8 @@
   
   .navbarMenu li {
     margin-right: 20px;
+    font-family: "Space Mono", monospace;
+
   }
   
   .navbarMenu a {
@@ -59,4 +61,5 @@
   
   .navbarMenu a:hover {
     color: #0080FF;
+
   }
