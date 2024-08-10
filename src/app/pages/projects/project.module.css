@@ -1,0 +1,78 @@
+
+@keyframes slide-in-left {
+    0% {
+      transform: translateX(-100%);
+    }
+  
+    60% {
+      transform: translateX(30px);
+    }
+  
+    80% {
+      transform: translateX(-10px);
+    }
+  
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+  }
+.projectMain{
+    height: 100vh;
+    display: flex;
+    width:100%;
+    flex-direction: column;
+    animation: fade-in 2s ease-in-out;
+
+
+}
+
+.head{
+width: 100%;
+justify-content: center;
+display: flex;
+
+}
+
+.headJR{
+width: 60%;
+justify-content: center;
+display: flex;
+}
+
+.headJR h2{
+    font-family: "Space Mono", monospace;
+
+
+}
+
+.jigu hr{
+    width: 60%;
+}
+
+
+.projectLoad{
+  width:100%;
+  justify-content: center;
+  display: flex;
+  animation: slide-in-left 2s ease-in-out;
+
+}
+
+.projectLoad h2{
+  font-family: "Space Mono", monospace;
+
+}
+
+
+
